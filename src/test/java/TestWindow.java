@@ -1,5 +1,4 @@
-package fr.acth2.a2util;
-
+import fr.acth2.a2util.A2Utils;
 import fr.acth2.a2util.elements.A2CheckBox;
 import fr.acth2.a2util.elements.A2TextField;
 import fr.acth2.a2util.types.Window;

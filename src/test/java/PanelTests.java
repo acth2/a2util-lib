@@ -1,5 +1,4 @@
-package fr.acth2.a2util;
-
+import fr.acth2.a2util.A2Utils;
 import fr.acth2.a2util.types.Window;
 
 import javax.swing.*;
@@ -15,6 +14,7 @@ public class PanelTests {
         Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
 
         Window frame = new Window("Panel Test");
+        frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(screen);
         frame.setLocation(0, 0);
