@@ -159,7 +159,7 @@ public class A2Utils {
         return null;
     }
 
-    private void playNotification() {
+    public static void playNotification() {
         new Thread(new Runnable() {
             @Override
             public void run() {
