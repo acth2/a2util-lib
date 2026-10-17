@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "io.github.acth2"
-version = "1.0.0"
+version = "1.1.0"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
@@ -42,7 +42,7 @@ mavenPublishing {
     publishToMavenCentral()
     signAllPublications()
 
-    coordinates("io.github.acth2", "a2util-lib", "1.0.0")
+    coordinates("io.github.acth2", "a2util-lib", version.toString())
 
     pom {
         name.set("a2util-lib")

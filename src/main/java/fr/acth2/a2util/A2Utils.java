@@ -6,11 +6,15 @@ import fr.acth2.a2util.arguments.Arguments;
 import fr.acth2.a2util.logging.Logger;
 import fr.acth2.a2util.memory.MemoryManager;
 
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.SourceDataLine;
 import javax.swing.*;
 import javax.swing.plaf.ColorUIResource;
 import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.awt.event.AWTEventListener;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -153,6 +157,38 @@ public class A2Utils {
             return file.getAbsolutePath();
         }
         return null;
+    }
+
+    private void playNotification() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    float rate = 44100f;
+                    int[] freqs = {660, 880};
+                    ByteArrayOutputStream buf = new ByteArrayOutputStream();
+                    for (int f : freqs) {
+                        int samples = (int) (rate * 0.18);
+                        for (int i = 0; i < samples; i++) {
+                            double env = Math.min(1.0, Math.min(i, samples - i) / (rate * 0.01));
+                            short v = (short) (Math.sin(2 * Math.PI * f * i / rate) * 12000 * env);
+                            buf.write(v & 0xff);
+                            buf.write((v >> 8) & 0xff);
+                        }
+                    }
+                    byte[] data = buf.toByteArray();
+                    AudioFormat format = new AudioFormat(rate, 16, 1, true, false);
+                    SourceDataLine line = AudioSystem.getSourceDataLine(format);
+                    line.open(format);
+                    line.start();
+                    line.write(data, 0, data.length);
+                    line.drain();
+                    line.close();
+                } catch (Exception e) {
+                    Toolkit.getDefaultToolkit().beep();
+                }
+            }
+        }).start();
     }
 
     public static Arguments getProgramArguments() {
