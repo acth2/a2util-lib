@@ -75,6 +75,7 @@ public class A2Utils {
             UIManager.put("CheckBox.icon.focusedSelectedBorderColor", black);
             UIManager.put("CheckBox.icon.hoverBorderColor", black);
             UIManager.put("CheckBox.icon.pressedBorderColor", black);
+            UIManager.put("TitledBorder.titleColor", black);
 
             String[] buttonKeys = {"background", "foreground", "hoverBackground", "pressedBackground",
                     "borderColor", "focusedBorderColor", "focusColor", "hoverBorderColor"};
