@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class TestWindow {
     public static void main(String[] args) {
-        A2Utils.setup("test-window", args, true);
+        A2Utils.setup("test-window", args, true, true);
 
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -54,6 +54,10 @@ public class TestWindow {
         A2CheckBox checkBox = new A2CheckBox("Test checkbox", "0");
         A2CheckBox checkedBox = new A2CheckBox("Checked checkbox", "1");
         A2CheckBox disabledBox = new A2CheckBox("Disabled checkbox", "2");
+
+        System.out.println(checkBox.getIcon());
+        System.out.println(UIManager.getLookAndFeel().getName());
+
         disabledBox.setEnabled(false);
         button.setToolTipText("Tooltip text");
         frame.getRootPane().setDefaultButton(defaultButton);

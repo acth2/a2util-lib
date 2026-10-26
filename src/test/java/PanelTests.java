@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class PanelTests {
     public static void main(String[] args) {
-        A2Utils.setup("panel-test", args, true);
+        A2Utils.setup("panel-test", args, true, true);
         SwingUtilities.invokeLater(PanelTests::buildUi);
     }
 
@@ -22,7 +22,6 @@ public class PanelTests {
 
         JPanel panel = new JPanel(new BorderLayout());
         panel.setPreferredSize(new Dimension(screen.width / 3, screen.height));
-        panel.setBorder(BorderFactory.createTitledBorder("1/3 panel"));
         panel.add(new JLabel("Test panel", SwingConstants.CENTER), BorderLayout.CENTER);
 
         frame.add(panel, BorderLayout.WEST);
